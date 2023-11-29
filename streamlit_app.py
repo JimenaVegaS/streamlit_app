@@ -27,9 +27,13 @@ with pestaña1:
         with left_column:
             st.button("Nacional", type="secondary")
             image1=Image.open('Donaciones2022-marzo.png')
+            st.image(image1)
             image2=Image.open('Donaciones2022-junio.png')
+            st.image(image2)
             image3=Image.open('Donaciones2022-septiembre.png')
+            st.image(image3)
             image4=Image.open('Donaciones2022-diciembre.png')
+            st.image(image4)
         with right_column:
             st.button("Internacional", type="secondary") 
             chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
