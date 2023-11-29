@@ -34,6 +34,7 @@ with pestaña1:
             st.image(image3)
             image4=Image.open('Donaciones2022-diciembre.png')
             st.image(image4)
+            st.caption("Los datos están divididos por trimestres.")
         with right_column:
             st.button("Internacional", type="secondary") 
             chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
