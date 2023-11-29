@@ -27,8 +27,11 @@ with pestaña1:
         with right_column:
             st.button("Internacional", type="secondary") 
             image5=Image.open('Donaciones2023-marzo.png')
+            st.image(image5)
             image6=Image.open('Donaciones2023-junio.png')
+            st.image(image6)
             image7=Image.open('Donaciones2023-septiembre.png')
+            st.image(image7)
             st.caption('Los datos de este gráfico no están actualizados a la fecha actual.')
 
 with pestaña2:
