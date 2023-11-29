@@ -4,17 +4,6 @@ import numpy as np
 from PIL import Image
 import altair as alt
 
-#data del 2023(falta diciembre)
-df1 = pd.read_csv("df_si_aceptan_peru_mar23.csv", encoding='utf-8')
-df2 = pd.read_csv("df_si_aceptan_peru_jun23.csv", encoding='utf-8')
-df3 = pd.read_csv("df_si_aceptan_peru_set23 (1).csv", encoding='utf-8')
-
-#data del 2022
-df5= pd.read_csv("Junio2022de18a80años.csv")
-df6= pd.read_csv("septiembre2022de18a80años.csv")
-df7= pd.read_csv("diciembre2022de18a80años.csv")
-df7 = df7.rename(columns={"Donacion": "C_Donacion"})
-
 titulos_pestanas = ['Página principal', 'Nacional', 'Internacional','Departamentos','Países','Sobre nosotras']
 pestaña1, pestaña2, pestaña3, pestaña4, pestaña5, pestaña6 = st.tabs(titulos_pestanas)
 
@@ -37,8 +26,9 @@ with pestaña1:
             st.caption("Los datos están divididos por trimestres.")
         with right_column:
             st.button("Internacional", type="secondary") 
-            chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
-            st.bar_chart(chart_data)
+            image5=Image.open('Donaciones2023-marzo.png')
+            image6=Image.open('Donaciones2023-junio.png')
+            image7=Image.open('Donaciones2023-septiembre.png')
             st.caption('Los datos de este gráfico no están actualizados a la fecha actual.')
 
 with pestaña2:
