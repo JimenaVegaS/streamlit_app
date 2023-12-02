@@ -4,6 +4,13 @@ import numpy as np
 import altair as alt
 from PIL import Image
 
+[theme]
+primaryColor="#F63366"
+backgroundColor="#FFFFFF"
+secondaryBackgroundColor="#F0F2F6"
+textColor="#262730"
+font="sans serif"
+
 # Data del 2023 (falta diciembre)
 df1 = pd.read_csv("2023_parte1.csv")
 df2 = pd.read_csv("2023_parte2.csv")
