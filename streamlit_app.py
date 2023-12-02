@@ -173,7 +173,7 @@ with pestaña3:
                 data_dict['Hombre'].append(df_departamento[df_departamento['Sexo'] == 'Hombre']['Donantes'].iloc[0])
             chart_data = pd.DataFrame(data_dict)
             st.bar_chart(chart_data.set_index('Continente'))
-
+    
             nacional = chart_data_2023[(chart_data_2023['Donacion'] == "Si acepta donar") & (chart_data_2023['Residencia'] == "Extranjero")]
             conteo_sexo = nacional.groupby(['Continente', 'Sexo']).size().unstack(fill_value=0).reset_index()
             conteo_sexo.columns.name = None
