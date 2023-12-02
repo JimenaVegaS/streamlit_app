@@ -4,7 +4,8 @@ import numpy as np
 import altair as alt
 from PIL import Image
 
-primaryColor="#F63366"
+base="dark"
+primaryColor="purple"
 backgroundColor="#FFFFFF"
 secondaryBackgroundColor="#F0F2F6"
 textColor="#262730"
