@@ -65,8 +65,8 @@ with pestaña1:
                     donation_percentages = donation_percentages.round(2)
                     grafica = pd.DataFrame({'Donation Status': donation_counts.index, 'Donation Counts': donation_counts, 'Percentage': donation_percentages})
                     c = alt.Chart(grafica).mark_arc().encode(theta="Percentage:Q", color="Donation Status:N")
-                    st.write("Durante los años 2022 y 2023, a nivel internacional, el 39.59""%"" de las personas aceptó donar sus órganos; el 46.49""%"", no acepto; y el 13.92""%"", no especifica.")                    
                     st.altair_chart(c, use_container_width=True)
+                    st.write("Durante los años 2022 y 2023, a nivel internacional, el 39.59""%"" de las personas aceptó donar sus órganos; el 46.49""%"", no acepto; y el 13.92""%"", no especifica.")                    
                     st.write("Donadores y Porcentaje:")
                     st.write(grafica[['Donation Counts', 'Percentage']])
 
