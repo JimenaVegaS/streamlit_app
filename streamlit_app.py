@@ -211,10 +211,10 @@ with pestaña4:
         chart_data_nacional_2023['Porcentaje'] = (chart_data_nacional_2023['Donantes'] / total_donantes_nacionales) * 100
         chart_data_nacional_2023['Porcentaje'] = chart_data_nacional_2023['Porcentaje'].round(2)
         st.bar_chart(chart_data_nacional_2023.set_index('Departamento')['Porcentaje'])
+        st.write("Durante el año 2022, varias personas aceptaron ser donantes y este gráfico muestra la cantidad de personas que aceptaron por departamentos.")
         st.write(chart_data_nacional_2023[['Departamento', 'Donantes','Porcentaje']])
         st.caption("Los datos de este gráfico no están actualizados a la fecha actual.")
         st.write("")
-        st.write("El gráfico muestra la cantidad de personas que aceptaron donar sus órganos durante el año 2023.")
 
 with pestaña5:
     st.title("Condición de donante de órganos por países")
