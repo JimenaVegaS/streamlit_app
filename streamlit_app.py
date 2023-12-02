@@ -197,7 +197,7 @@ with pestaña4:
         chart_data_nacional_2022['Porcentaje'] = (chart_data_nacional_2022['Donantes'] / total_donantes_nacionales) * 100
         chart_data_nacional_2022['Porcentaje'] = chart_data_nacional_2022['Porcentaje'].round(2)
         st.bar_chart(chart_data_nacional_2022.set_index('Departamento')['Porcentaje'])
-        st.write("El gráfico muestra la cantidad de personas que aceptaron donar sus órganos durante el año 2022.")
+        st.write("Durante el año 2022, varias personas aceptaron ser donantes y este gráfico muestra la cantidad de personas que aceptaron por departamentos.")
         st.write(chart_data_nacional_2022[['Departamento', 'Donantes','Porcentaje']])
 
         
