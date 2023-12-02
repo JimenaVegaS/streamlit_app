@@ -132,18 +132,54 @@ with pestaña2:
     st.write(conteo_sexo) 
 
 with pestaña3:
-    st.title ("Condición de donante de órganos a nivel internacional")
+    st.title("Condición de donante de órganos a nivel internacional")
     with st.container():
         left_column, right_column = st.columns(2)
         with left_column:
             st.button(" 2022", type="secondary")
-            chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
-            st.bar_chart(chart_data)
+            chart_data_2022 = pd.concat([df5_1 , df5_2, df6, df7, df8], ignore_index=True)
+            filtered_df_2022 = chart_data_2022[(chart_data_2022['Edad'] > 17) & (chart_data_2022['Edad'] < 81)]
+            nacional = filtered_df_2022[(filtered_df_2022['Donacion'] == 'Si acepta donar') & (filtered_df_2022['Residencia'] == 'Extranjero')]
+            repeticiones_por_fila = nacional.groupby(['Continente', 'Sexo']).size().reset_index(name='Donantes')
+            fila_max_repeticiones = repeticiones_por_fila.loc[repeticiones_por_fila.groupby(['Continente', 'Sexo'])['Donantes'].idxmax()]
+            continentes = fila_max_repeticiones['Continente'].unique()
+            data_dict = {'Continente': continentes, 'Mujer': [], 'Hombre': []}
+
+            for continente in continentes:
+                df_departamento = fila_max_repeticiones[fila_max_repeticiones['Continente'] == continente]
+                data_dict['Mujer'].append(df_departamento[df_departamento['Sexo'] == 'Mujer']['Donantes'].iloc[0])
+                data_dict['Hombre'].append(df_departamento[df_departamento['Sexo'] == 'Hombre']['Donantes'].iloc[0])
+            chart_data = pd.DataFrame(data_dict)
+            st.bar_chart(chart_data.set_index('Continente'))
+    
+            nacional = chart_data_2022[(chart_data_2022['Donacion'] == "Si acepta donar") & (chart_data_2022['Residencia'] == "Extranjero")]
+            conteo_sexo = nacional.groupby(['Continente', 'Sexo']).size().unstack(fill_value=0).reset_index()
+            conteo_sexo.columns.name = None
+            conteo_sexo = conteo_sexo.rename(columns={'Mujer': 'Mujeres', 'Hombre': 'Hombres'}) 
+            st.write(conteo_sexo)
+
         with right_column:
             st.button(" 2023", type="secondary")
-            chart_data = pd.DataFrame(np.random.randn(20, 3), columns=["a", "b", "c"])
-            st.bar_chart(chart_data)
-            st.caption("Los datos de este gráfico no están actualizados a la fecha actual.")
+            chart_data_2023 = pd.concat([df1, df2, df3,df4 ], ignore_index=True)
+            filtered_df_2023 = chart_data_2023[(chart_data_2023['Edad'] > 17) & (chart_data_2023['Edad'] < 81)]
+            nacional = filtered_df_2023[(filtered_df_2023['Donacion'] == 'Si acepta donar') & (filtered_df_2023['Residencia'] == 'Extranjero')]
+            repeticiones_por_fila = nacional.groupby(['Continente', 'Sexo']).size().reset_index(name='Donantes')
+            fila_max_repeticiones = repeticiones_por_fila.loc[repeticiones_por_fila.groupby(['Continente', 'Sexo'])['Donantes'].idxmax()]
+            continentes = fila_max_repeticiones['Continente'].unique()
+            data_dict = {'Continente': continentes, 'Mujer': [], 'Hombre': []}
+
+            for continente in continentes:
+                df_departamento = fila_max_repeticiones[fila_max_repeticiones['Continente'] == continente]
+                data_dict['Mujer'].append(df_departamento[df_departamento['Sexo'] == 'Mujer']['Donantes'].iloc[0])
+                data_dict['Hombre'].append(df_departamento[df_departamento['Sexo'] == 'Hombre']['Donantes'].iloc[0])
+            chart_data = pd.DataFrame(data_dict)
+            st.bar_chart(chart_data.set_index('Continente'))
+    
+            nacional = chart_data_2023[(chart_data_2023['Donacion'] == "Si acepta donar") & (chart_data_2023['Residencia'] == "Extranjero")]
+            conteo_sexo = nacional.groupby(['Continente', 'Sexo']).size().unstack(fill_value=0).reset_index()
+            conteo_sexo.columns.name = None
+            conteo_sexo = conteo_sexo.rename(columns={'Mujer': 'Mujeres', 'Hombre': 'Hombres'}) 
+            st.write(conteo_sexo)
 
 with pestaña4:
     st.title("Condición de donante de órganos por departamentos")
