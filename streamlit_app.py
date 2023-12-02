@@ -24,7 +24,6 @@ pestaña1, pestaña2, pestaña3, pestaña4, pestaña5, pestaña6 = st.tabs(titul
 
 with pestaña1:
     st.title('Análisis de Población identificada con DNI de mayor de edad por condición de donante de órganos')
-    st.write("Texto sobre donación de órganos")
     st.write("")
     with st.container():
         left_column, right_column = st.columns(2)
@@ -245,5 +244,10 @@ with pestaña5:
 
 with pestaña6:
     st.title("Sobre nosotras")
+    st.write("Brigitte Bernal Belisario")
+    st.write("Milagros Soledad Acevedo Valer")
+    st.write("Nardy Liz Condori Mamani")
+    st.write("Melissa Quispe Baldeon")
+    st.write("Jimena Natalia Vega Sanchez")
 
 st.link_button("Para más información de click aquí", "https://www.datosabiertos.gob.pe/dataset/reniec-poblaci%C3%B3n-identificada-con-dni-de-mayor-de-edad-por-condici%C3%B3n-de-donante-de-%C3%B3rganos")
