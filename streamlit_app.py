@@ -1,8 +1,23 @@
-import streamlit as st
 import pandas as pd
+import streamlit as st
 import numpy as np
-from PIL import Image
 import altair as alt
+from PIL import Image
+
+# Data del 2023 (falta diciembre)
+df1 = pd.read_csv("2023_parte1.csv")
+df2 = pd.read_csv("2023_parte2.csv")
+df3 = pd.read_csv("2023_parte3.csv")
+df4 = pd.read_csv("2023_parte4.csv")
+
+# Data del 2022
+df5_1 = pd.read_csv("marzo2022_parte1.csv")
+df5_2 = pd.read_csv("marzo2022_parte2.csv")
+df6= pd.read_csv("Junio2022de18a80años.csv")
+df6 = df6.rename(columns={"C_Donacion": "Donacion"})
+df7 = pd.read_csv("septiembre2022de18a80años.csv")
+df7 = df7.rename(columns={"C_Donacion": "Donacion"})
+df8 = pd.read_csv("diciembre2022de18a80años.csv")
 
 titulos_pestanas = ['Página principal', 'Nacional', 'Internacional','Departamentos','Países','Sobre nosotras']
 pestaña1, pestaña2, pestaña3, pestaña4, pestaña5, pestaña6 = st.tabs(titulos_pestanas)
