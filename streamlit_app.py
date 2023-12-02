@@ -129,7 +129,7 @@ with pestaña2:
     conteo_sexo.columns.name = None
     conteo_sexo = conteo_sexo.rename(columns={'Mujer': 'Mujeres', 'Hombre': 'Hombres'}) 
     st.write(conteo_sexo) 
-    st.caption("Este gráfico no incluye los datos del cuarto trimestre.")
+    st.caption("Este gráfico no incluye los datos del cuarto trimestre del 2023.")
 
 with pestaña3:
     st.title("Condición de donante de órganos a nivel internacional")
