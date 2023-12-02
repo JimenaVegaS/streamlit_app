@@ -243,7 +243,6 @@ with pestaña5:
         st.write(chart_data_nacional[['Pais','Porcentaje']])
 
 with pestaña6:
-    st.markdown("<h2 style='text-align: center; color: black;'>Smaller headline in black </h2>", unsafe_allow_html=True)
     st.title("Sobre nosotras")
     st.write("Brigitte Bernal Belisario")
     st.write("Milagros Soledad Acevedo Valer")
