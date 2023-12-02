@@ -218,30 +218,30 @@ with pestaña5:
     st.title("Condición de donante de órganos por países")
     option3 = st.selectbox(
         "Elige un continente",
-        ("África","América","Asia","Europa","Oceanía"))
-    if option3 == "África":
-        option5 = st.selectbox(
-                "Elige un país",
-                ("Argelia","Costa de Marfil"))
-    elif option3 == "América":
-        option5 = st.selectbox(
-            "Elige un país",
-            ("Antillas Holandesas","Argentina"))
-    elif option3 == "Asia":
-        option5 = st.selectbox(
-            "Elige un país",
-            ("Catar","India"))
-    elif option3 == "Europa":
-        option5 = st.selectbox(
-            "ELige un país",
-            ("Alemania","Austria"))
-    elif option3 == "Oceanía":
-        option5 = st.selectbox(
-            "Elige un país",
-            ("Australia","Nueva Zelanda"))
+        ("África", "América", "Asia", "Europa", "Oceanía"))
     option4 = st.selectbox(
         "Elige un año",
-        (" 2022","2023"))
+        (" 2022", "2023"))
+    if option4 == "2023":
+        chart_data_2023 = pd.concat([df1, df2, df3, df4], ignore_index=True)
+        nacional = chart_data_2023[(chart_data_2023['Donacion'] == "Si acepta donar") & (chart_data_2023['Residencia'] == "Extranjero")]
+        filtered_data = nacional[nacional['Continente'] == option3]
+        total_donantes = filtered_data.shape[0]
+        chart_data_nacional = filtered_data.groupby(['Pais']).size().reset_index(name='Donantes')
+        chart_data_nacional['Porcentaje'] = (chart_data_nacional['Donantes'] / total_donantes) * 100
+        chart_data_nacional['Porcentaje'] = chart_data_nacional['Porcentaje'].round(2)
+        st.bar_chart(chart_data_nacional.set_index('Pais')['Porcentaje'])
+        st.write(chart_data_nacional[['Pais','Porcentaje']])
+    else:
+        chart_data_2022 = pd.concat([df5_1 , df5_2, df6, df7,df8], ignore_index=True)
+        nacional = filtered_df_2022[(filtered_df_2022['Donacion'] == "Si acepta donar") & (filtered_df_2022['Residencia'] == "Extranjero")]
+        filtered_data = nacional[nacional['Continente'] == option3]
+        total_donantes = filtered_data.shape[0]
+        chart_data_nacional = filtered_data.groupby(['Pais']).size().reset_index(name='Donantes')
+        chart_data_nacional['Porcentaje'] = (chart_data_nacional['Donantes'] / total_donantes) * 100
+        chart_data_nacional['Porcentaje'] = chart_data_nacional['Porcentaje'].round(2)
+        st.bar_chart(chart_data_nacional.set_index('Pais')['Porcentaje'])
+        st.write(chart_data_nacional[['Pais','Porcentaje']])
 
 with pestaña6:
     st.title("Sobre nosotras")
