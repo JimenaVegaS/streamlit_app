@@ -197,9 +197,10 @@ with pestaña4:
         chart_data_nacional_2022['Porcentaje'] = (chart_data_nacional_2022['Donantes'] / total_donantes_nacionales) * 100
         chart_data_nacional_2022['Porcentaje'] = chart_data_nacional_2022['Porcentaje'].round(2)
         st.bar_chart(chart_data_nacional_2022.set_index('Departamento')['Porcentaje'])
+        st.write("El gráfico muestra la cantidad de personas que aceptaron donar sus órganos durante el año 2022.")
         st.write(chart_data_nacional_2022[['Departamento', 'Donantes','Porcentaje']])
 
-        st.write("El gráfico muestra la cantidad de personas que aceptaron donar sus órganos durante el año 2022.")
+        
     elif option0 == "2023":
         st.subheader(f"Gráfico para 2023")
         chart_data_2023 = pd.concat([df1, df2, df3, df4], ignore_index=True)
