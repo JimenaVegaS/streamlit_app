@@ -40,9 +40,9 @@ with pestaña1:
                     grafica = pd.DataFrame({'Donation Status': donation_counts.index, 'Donation Counts': donation_counts, 'Percentage': donation_percentages})
                     c = alt.Chart(grafica).mark_arc().encode(theta="Percentage:Q", color="Donation Status:N")
                     st.altair_chart(c, use_container_width=True)
+                    st.write("Durante los años 2022 y 2023, a nivel nacional, el 31.64""%"" de las personas")
                     st.write("Donadores y Porcentaje:")
                     st.write(grafica[['Donation Counts', 'Percentage']])
-
                     df_with_percentages = pd.DataFrame({'Donation Status': donation_counts.index, 'Percentage': donation_percentages})
 
                     return df_with_percentages
