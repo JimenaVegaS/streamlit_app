@@ -185,21 +185,31 @@ with pestaña4:
     st.title("Condición de donante de órganos por departamentos")
     option0 = st.selectbox(
         "Elige un año",
-        ("2022","2023"))
+        ("2022", "2023"))
     if option0 == "2022":
-        lista1 = ["Áncash","Amazonas","Apurímac","Arequipa","Ayacucho","Cajamarca","Callao","Cusco","Huancavelica","Huánuco","Ica","Junín","La Libertad","Lambayeque","Lima","Loreto","Madre de Dios","Moquegua","Pasco","Piura","Puno","San Martín","Tacna","Tumbes","Ucayali"]
-        lista2 = [437356,47620,60638,560103,97159,188313,157847,190839,26419,57707,95206,58440,186959,110010,1575708,41149,20438,18486,14127,134095,38182,51936,27444,16078,40806]
-        chart_data = pd.DataFrame(
-            {"Departamento": list(lista1[0:25]), "Cantidad": list(lista2[0:25])}
-        )
-        st.bar_chart(
-            chart_data, x="Departamento", y=["Cantidad"]
-        )
-        st.write("")
+        st.subheader(f"Gráfico para 2022")
+        chart_data_2022 = pd.concat([df5_1 , df5_2, df6, df7,df8], ignore_index=True)
+        filtered_df_2022 = chart_data_2022[(chart_data_2022['Edad'] > 17) & (chart_data_2022['Edad'] < 81)]
+        nacional_2022 = filtered_df_2022[(filtered_df_2022['Donacion'] == "Si acepta donar") & (filtered_df_2022['Residencia'] == "Nacional")]
+        total_donantes_nacionales = nacional_2022.shape[0]
+        chart_data_nacional_2022 = nacional_2022.groupby(['Departamento']).size().reset_index(name='Donantes')
+        chart_data_nacional_2022['Porcentaje'] = (chart_data_nacional_2022['Donantes'] / total_donantes_nacionales) * 100
+        chart_data_nacional_2022['Porcentaje'] = chart_data_nacional_2022['Porcentaje'].round(2)
+        st.bar_chart(chart_data_nacional_2022.set_index('Departamento')['Porcentaje'])
+        st.write(chart_data_nacional_2022[['Departamento', 'Donantes','Porcentaje']])
+
         st.write("El gráfico muestra la cantidad de personas que aceptaron donar sus órganos durante el año 2022.")
     elif option0 == "2023":
-        image = Image.open('Donación por departamentos.png')
-        st.image(image)
+        st.subheader(f"Gráfico para 2023")
+        chart_data_2023 = pd.concat([df1, df2, df3, df4], ignore_index=True)
+        filtered_df_2023 = chart_data_2023[(chart_data_2023['Edad'] > 17) & (chart_data_2023['Edad'] < 81)]
+        nacional_2023 = filtered_df_2023[(filtered_df_2023['Donacion'] == "Si acepta donar") & (filtered_df_2023['Residencia'] == "Nacional")]
+        total_donantes_nacionales = nacional_2023.shape[0]
+        chart_data_nacional_2023 = nacional_2023.groupby(['Departamento']).size().reset_index(name='Donantes')
+        chart_data_nacional_2023['Porcentaje'] = (chart_data_nacional_2023['Donantes'] / total_donantes_nacionales) * 100
+        chart_data_nacional_2023['Porcentaje'] = chart_data_nacional_2023['Porcentaje'].round(2)
+        st.bar_chart(chart_data_nacional_2023.set_index('Departamento')['Porcentaje'])
+        st.write(chart_data_nacional_2023[['Departamento', 'Donantes','Porcentaje']])
         st.caption("Los datos de este gráfico no están actualizados a la fecha actual.")
         st.write("")
         st.write("El gráfico muestra la cantidad de personas que aceptaron donar sus órganos durante el año 2023.")
