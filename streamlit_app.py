@@ -30,24 +30,56 @@ with pestaña1:
         left_column, right_column = st.columns(2)
         with left_column:
             st.button("Nacional", type="secondary")
-            image1=Image.open('Donaciones2022-marzo.png')
-            st.image(image1)
-            image2=Image.open('Donaciones2022-junio.png')
-            st.image(image2)
-            image3=Image.open('Donaciones2022-septiembre.png')
-            st.image(image3)
-            image4=Image.open('Donaciones2022-diciembre.png')
-            st.image(image4)
-            st.caption("Los datos están divididos por trimestres.")
+            def display_and_count_donacion_column_st(df, name):
+                donacion_column = 'Donacion' if 'Donacion' in df.columns else 'C_Donacion'
+
+                if donacion_column in df.columns:
+                    df = df[df[donacion_column] != "No acepta"]
+                    donation_counts = df[donacion_column].value_counts()
+                    donation_percentages = (donation_counts / donation_counts.sum()) * 100
+                    donation_percentages = donation_percentages.round(2)
+                    grafica = pd.DataFrame({'Donation Status': donation_counts.index, 'Donation Counts': donation_counts, 'Percentage': donation_percentages})
+                    c = alt.Chart(grafica).mark_arc().encode(theta="Percentage:Q", color="Donation Status:N")
+                    st.altair_chart(c, use_container_width=True)
+                    st.write("Donadores y Porcentaje:")
+                    st.write(grafica[['Donation Counts', 'Percentage']])
+
+                    df_with_percentages = pd.DataFrame({'Donation Status': donation_counts.index, 'Percentage': donation_percentages})
+
+                    return df_with_percentages
+
+                else:
+                 st.write(f"No donation column found in {name} DataFrame.")
+
+            df_merged = pd.concat([df1, df2, df3,df4,df5_1 , df5_2,df6,df7,df8], ignore_index=True)
+            df_merged  = df_merged [(df_merged ['Residencia'] == "Nacional")]
+            merged_donation_stats = display_and_count_donacion_column_st(df_merged, "Merged Data")
+
         with right_column:
-            st.button("Internacional", type="secondary") 
-            image5=Image.open('Donaciones2023-marzo.png')
-            st.image(image5)
-            image6=Image.open('Donaciones2023-junio.png')
-            st.image(image6)
-            image7=Image.open('Donaciones2023-septiembre.png')
-            st.image(image7)
-            st.caption('Los datos de este gráfico no están actualizados a la fecha actual.')
+            st.button("Internacional", type="secondary")
+            def display_and_count_donacion_column_st(df, name):
+                donacion_column = 'Donacion' if 'Donacion' in df.columns else 'C_Donacion'
+
+                if donacion_column in df.columns:
+                    donation_counts = df[donacion_column].value_counts()
+                    donation_percentages = (donation_counts / donation_counts.sum()) * 100
+                    donation_percentages = donation_percentages.round(2)
+                    grafica = pd.DataFrame({'Donation Status': donation_counts.index, 'Donation Counts': donation_counts, 'Percentage': donation_percentages})
+                    c = alt.Chart(grafica).mark_arc().encode(theta="Percentage:Q", color="Donation Status:N")
+                    st.altair_chart(c, use_container_width=True)
+                    st.write("Donadores y Porcentaje:")
+                    st.write(grafica[['Donation Counts', 'Percentage']])
+
+                    df_with_percentages = pd.DataFrame({'Donation Status': donation_counts.index, 'Percentage': donation_percentages})
+
+                    return df_with_percentages
+
+                else:
+                 st.write(f"No donation column found in {name} DataFrame.")
+
+            df_merged = pd.concat([df1, df2, df3,df4,df5_1 , df5_2,df6,df7,df8], ignore_index=True)
+            df_merged  = df_merged [(df_merged ['Residencia'] == "Extranjero")]
+            merged_donation_stats = display_and_count_donacion_column_st(df_merged, "Merged Data")
 
 with pestaña2:
     st.title("Condición de donante de órganos a nivel nacional")
