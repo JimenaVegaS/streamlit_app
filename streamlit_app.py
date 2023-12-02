@@ -67,14 +67,12 @@ with pestaña1:
                     c = alt.Chart(grafica).mark_arc().encode(theta="Percentage:Q", color="Donation Status:N")
                     st.altair_chart(c, use_container_width=True)
                     st.write("Durante los años 2022 y 2023, a nivel internacional, el 39.59""%"" de las personas aceptó donar sus órganos; el 46.49""%"", no acepto; y el 13.92""%"", no especifica.")                    
-                    st.caption("Este gráfico no incluye los datos del cuarto trimestre del 2023")
+                    
                     st.write("Donadores y Porcentaje:")
                     st.write(grafica[['Donation Counts', 'Percentage']])
-
                     df_with_percentages = pd.DataFrame({'Donation Status': donation_counts.index, 'Percentage': donation_percentages})
-
                     return df_with_percentages
-
+                    st.caption("Este gráfico no incluye los datos del cuarto trimestre del 2023")
                 else:
                  st.write(f"No donation column found in {name} DataFrame.")
 
