@@ -70,9 +70,9 @@ with pestaña1:
                     
                     st.write("Donadores y Porcentaje:")
                     st.write(grafica[['Donation Counts', 'Percentage']])
+                    st.caption("Este gráfico no incluye los datos del cuarto trimestre del 2023")
                     df_with_percentages = pd.DataFrame({'Donation Status': donation_counts.index, 'Percentage': donation_percentages})
                     return df_with_percentages
-                    st.caption("Este gráfico no incluye los datos del cuarto trimestre del 2023")
                 else:
                  st.write(f"No donation column found in {name} DataFrame.")
 
