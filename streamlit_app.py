@@ -5,9 +5,8 @@ import altair as alt
 from PIL import Image
 import time
 
-with st.spinner('Wait for it...'):
+with st.spinner('Un momento por favor'):
     time.sleep(5)
-st.success('Done!')
 
 # Data del 2023 (falta diciembre)
 df1 = pd.read_csv("2023_parte1.csv")
