@@ -233,7 +233,16 @@ with pestaña5:
         chart_data_nacional['Porcentaje'] = (chart_data_nacional['Donantes'] / total_donantes) * 100
         chart_data_nacional['Porcentaje'] = chart_data_nacional['Porcentaje'].round(2)
         st.bar_chart(chart_data_nacional.set_index('Pais')['Porcentaje'])
-        st.write("Durante 2023, en Africa, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
+        if option3 == "África":
+            st.write("Durante 2023, en África, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
+        elif option3 == "América":
+            st.write("Durante 2023, en América, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
+        elif option3 == "Asia":
+            st.write("Durante 2023, en Asia, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
+        elif option3 == "Europa":
+            st.write("Durante 2023, en Europa, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
+        elif option3 == "Oceanía":
+            st.write("Durante 2023, en Oceanía, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
         st.write(chart_data_nacional[['Pais','Porcentaje']])
     else:
         chart_data_2022 = pd.concat([df5_1 , df5_2, df6, df7,df8], ignore_index=True)
@@ -244,7 +253,6 @@ with pestaña5:
         chart_data_nacional['Porcentaje'] = (chart_data_nacional['Donantes'] / total_donantes) * 100
         chart_data_nacional['Porcentaje'] = chart_data_nacional['Porcentaje'].round(2)
         st.bar_chart(chart_data_nacional.set_index('Pais')['Porcentaje'])
-        st.write("Durante 2022, en Africa, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
         st.write(chart_data_nacional[['Pais','Porcentaje']])
 
 with pestaña6:
