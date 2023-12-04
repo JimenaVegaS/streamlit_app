@@ -233,7 +233,7 @@ with pestaña5:
         chart_data_nacional['Porcentaje'] = (chart_data_nacional['Donantes'] / total_donantes) * 100
         chart_data_nacional['Porcentaje'] = chart_data_nacional['Porcentaje'].round(2)
         st.bar_chart(chart_data_nacional.set_index('Pais')['Porcentaje'])
-        st.write("En varios países de Africa")
+        st.write("Durante 2023, en Africa, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
         st.write(chart_data_nacional[['Pais','Porcentaje']])
     else:
         chart_data_2022 = pd.concat([df5_1 , df5_2, df6, df7,df8], ignore_index=True)
