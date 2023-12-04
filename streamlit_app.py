@@ -244,6 +244,7 @@ with pestaña5:
         chart_data_nacional['Porcentaje'] = (chart_data_nacional['Donantes'] / total_donantes) * 100
         chart_data_nacional['Porcentaje'] = chart_data_nacional['Porcentaje'].round(2)
         st.bar_chart(chart_data_nacional.set_index('Pais')['Porcentaje'])
+        st.write("Durante 2022, en Africa, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
         st.write(chart_data_nacional[['Pais','Porcentaje']])
 
 with pestaña6:
