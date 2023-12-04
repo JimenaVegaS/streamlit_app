@@ -254,15 +254,15 @@ with pestaña5:
         chart_data_nacional['Porcentaje'] = chart_data_nacional['Porcentaje'].round(2)
         st.bar_chart(chart_data_nacional.set_index('Pais')['Porcentaje'])
         if option3 == "África":
-            st.write("Durante 2023, en África, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
+            st.write("Durante 2022, en África, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
         elif option3 == "América":
-            st.write("Durante 2023, en América, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
+            st.write("Durante 2022, en América, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
         elif option3 == "Asia":
-            st.write("Durante 2023, en Asia, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
+            st.write("Durante 2022, en Asia, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
         elif option3 == "Europa":
-            st.write("Durante 2023, en Europa, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
+            st.write("Durante 2022, en Europa, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
         elif option3 == "Oceanía":
-            st.write("Durante 2023, en Oceanía, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
+            st.write("Durante 2022, en Oceanía, varias personas aceptaron ser donantes y este gráfico muestra la cantidad por países.")
         st.write(chart_data_nacional[['Pais','Porcentaje']])
 
 with pestaña6:
