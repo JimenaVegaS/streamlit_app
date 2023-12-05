@@ -101,14 +101,13 @@ with pestaña2:
     chart_data = pd.DataFrame(data_dict)
     st.bar_chart(chart_data.set_index('Departamento'))
     #data2022_mujer
-    chart_data_2022 = pd.concat([df5_1 , df5_2, df6, df7, df8], ignore_index=True)
+    chart_data_2022 = pd.concat([df5_1 , df5_2, df6, df7,df8], ignore_index=True)
     filtered_df_2022 = chart_data_2022[(chart_data_2022['Edad'] > 17) & (chart_data_2022['Edad'] < 81)]
-    mujer = filtered_df_2022[(filtered_df_2022['Donacion'] == 'Si acepta donar') & (filtered_df_2022['Sexo'] == 'Mujer')]
-    repeticiones_por_fila = mujer.groupby(['Departamento', 'Sexo']).size().reset_index(name='Donantes')
-    fila_max_repeticiones = repeticiones_por_fila.loc[repeticiones_por_fila.groupby(['Departamento', 'Sexo'])['Donantes'].idxmax()]
-    departamentos = fila_max_repeticiones['Departamento'].unique()
-    data_dict = {'Departamento': departamentos, 'Mujer': []}
-    
+    nacional_2022 = filtered_df_2022[(filtered_df_2022['Donacion'] == "Si acepta donar") & (filtered_df_2022['Residencia'] == "Nacional") & (filtered_df_2022['Mujer'] == "Mujer")]
+    total_donantes_nacionales = nacional_2022.shape[0]
+    chart_data_mujer_2022 = nacional_2022.groupby(['Departamento']).size().reset_index(name='Donantes')
+    st.bar_chart(chart_data_mujer_2022.set_index('Departamento'))
+        
     st.write("Durante el año 2022, varias personas, entre hombres y mujeres, aceptaron donar sus órganos por todo el país.")
     nacional = chart_data_2022[(chart_data_2022['Donacion'] == "Si acepta donar") & (chart_data_2022['Residencia'] == "Nacional")]
     conteo_sexo = nacional.groupby(['Departamento', 'Sexo']).size().unstack(fill_value=0).reset_index()
