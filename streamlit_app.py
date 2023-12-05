@@ -105,10 +105,19 @@ with pestaña2:
     st.write(conteo_sexo)
 
     st.subheader(f"Gráfico para 2023")
+    st.write("Cantidad de mujeres que aceptaron donar")
     #data2023_mujer
     chart_data_2023 = pd.concat([df1, df2, df3, df4], ignore_index=True)
     filtered_df_2023 = chart_data_2023[(chart_data_2023['Edad'] > 17) & (chart_data_2023['Edad'] < 81)]
     nacional_2023 = filtered_df_2023[(filtered_df_2023['Donacion'] == "Si acepta donar") & (filtered_df_2023['Residencia'] == "Nacional")& (filtered_df_2022['Sexo'] == "Mujer")]
+    total_donantes_nacionales = nacional_2023.shape[0]
+    chart_data_nacional_2023 = nacional_2023.groupby(['Departamento']).size().reset_index(name='Donantes')
+    st.bar_chart(chart_data_nacional_2023.set_index('Departamento'))
+    st.write("Cantidad de hombres que aceptaron donar")
+    #data2023_hombre
+    chart_data_2023 = pd.concat([df1, df2, df3, df4], ignore_index=True)
+    filtered_df_2023 = chart_data_2023[(chart_data_2023['Edad'] > 17) & (chart_data_2023['Edad'] < 81)]
+    nacional_2023 = filtered_df_2023[(filtered_df_2023['Donacion'] == "Si acepta donar") & (filtered_df_2023['Residencia'] == "Nacional")& (filtered_df_2022['Sexo'] == "Hombre")]
     total_donantes_nacionales = nacional_2023.shape[0]
     chart_data_nacional_2023 = nacional_2023.groupby(['Departamento']).size().reset_index(name='Donantes')
     st.bar_chart(chart_data_nacional_2023.set_index('Departamento'))
