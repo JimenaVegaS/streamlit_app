@@ -105,7 +105,7 @@ with pestaña2:
         conteo_sexo.columns.name = None
         conteo_sexo = conteo_sexo.rename(columns={'Mujer': 'Mujeres', 'Hombre': 'Hombres'}) 
         st.write(conteo_sexo)
-    elif option6 == "2023  "
+    elif option6 == "2023  ":
         st.subheader(f"Gráfico para 2023")
         st.write("Cantidad de mujeres que aceptaron donar")
         #data2023_mujer
