@@ -97,7 +97,6 @@ with pestaña2:
     for departamento in departamentos:
         df_departamento = fila_max_repeticiones[fila_max_repeticiones['Departamento'] == departamento]
         data_dict['Mujer'].append(df_departamento[df_departamento['Sexo'] == 'Mujer']['Donantes'].iloc[0])
-        data_dict['Hombre'].append(df_departamento[df_departamento['Sexo'] == 'Hombre']['Donantes'].iloc[0])
     chart_data = pd.DataFrame(data_dict)
     st.bar_chart(chart_data.set_index('Departamento'))
     st.write("Durante el año 2022, varias personas, entre hombres y mujeres, aceptaron donar sus órganos por todo el país.")
