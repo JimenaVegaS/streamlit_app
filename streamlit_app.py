@@ -82,7 +82,7 @@ with pestaña1:
 
 with pestaña2:
     st.title("Condición de donante de órganos a nivel nacional")
-    st.write("Todos los departamentos")
+    st.write("Cantidad de mujeres que aceptaron donar")
     #data2022_mujer
     chart_data_2022 = pd.concat([df5_1 , df5_2, df6, df7,df8], ignore_index=True)
     filtered_df_2022 = chart_data_2022[(chart_data_2022['Edad'] > 17) & (chart_data_2022['Edad'] < 81)]
@@ -90,6 +90,7 @@ with pestaña2:
     total_donantes_nacionales = nacional_2022.shape[0]
     chart_data_mujer_2022 = nacional_2022.groupby(['Departamento']).size().reset_index(name='Donantes')
     st.bar_chart(chart_data_mujer_2022.set_index('Departamento'))
+    st.write("Cantidad de hombres que aceptaron donar")
     #data2022_hombre
     chart_data_2022 = pd.concat([df5_1 , df5_2, df6, df7,df8], ignore_index=True)
     filtered_df_2022 = chart_data_2022[(chart_data_2022['Edad'] > 17) & (chart_data_2022['Edad'] < 81)]
