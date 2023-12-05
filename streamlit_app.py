@@ -96,7 +96,7 @@ with pestaña2:
         #data2022_hombre
         chart_data_2022 = pd.concat([df5_1 , df5_2, df6, df7,df8], ignore_index=True)
         filtered_df_2022 = chart_data_2022[(chart_data_2022['Edad'] > 17) & (chart_data_2022['Edad'] < 81)]
-        nacional_2022 = filtered_df_2022[(filtered_df_2022['Donacion'] == "Si acepta donar") & (filtered_df_2023['Residencia'] == "Nacional") & (filtered_df_2022['Sexo'] == "Hombre")]
+        nacional_2022 = filtered_df_2022[(filtered_df_2022['Donacion'] == "Si acepta donar") & (filtered_df_2022['Residencia'] == "Nacional") & (filtered_df_2022['Sexo'] == "Hombre")]
         total_donantes_nacionales = nacional_2022.shape[0]
         chart_data_mujer_2022 = nacional_2022.groupby(['Departamento']).size().reset_index(name='Donantes')
         st.bar_chart(chart_data_mujer_2022.set_index('Departamento'))
@@ -111,7 +111,7 @@ with pestaña2:
         #data2023_mujer
         chart_data_2023 = pd.concat([df1, df2, df3, df4], ignore_index=True)
         filtered_df_2023 = chart_data_2023[(chart_data_2023['Edad'] > 17) & (chart_data_2023['Edad'] < 81)]
-        nacional_2023 = filtered_df_2023[(filtered_df_2023['Donacion'] == "Si acepta donar") & (filtered_df_2023['Residencia'] == "Nacional")& (filtered_df_2022['Sexo'] == "Mujer")]
+        nacional_2023 = filtered_df_2023[(filtered_df_2023['Donacion'] == "Si acepta donar") & (filtered_df_2023['Residencia'] == "Nacional")& (filtered_df_2023['Sexo'] == "Mujer")]
         total_donantes_nacionales = nacional_2023.shape[0]
         chart_data_nacional_2023 = nacional_2023.groupby(['Departamento']).size().reset_index(name='Donantes')
         st.bar_chart(chart_data_nacional_2023.set_index('Departamento'))
@@ -119,7 +119,7 @@ with pestaña2:
         #data2023_hombre
         chart_data_2023 = pd.concat([df1, df2, df3, df4], ignore_index=True)
         filtered_df_2023 = chart_data_2023[(chart_data_2023['Edad'] > 17) & (chart_data_2023['Edad'] < 81)]
-        nacional_2023 = filtered_df_2023[(filtered_df_2023['Donacion'] == "Si acepta donar") & (filtered_df_2023['Residencia'] == "Nacional")& (filtered_df_2022['Sexo'] == "Hombre")]
+        nacional_2023 = filtered_df_2023[(filtered_df_2023['Donacion'] == "Si acepta donar") & (filtered_df_2023['Residencia'] == "Nacional")& (filtered_df_2023['Sexo'] == "Hombre")]
         total_donantes_nacionales = nacional_2023.shape[0]
         chart_data_nacional_2023 = nacional_2023.groupby(['Departamento']).size().reset_index(name='Donantes')
         st.bar_chart(chart_data_nacional_2023.set_index('Departamento'))
